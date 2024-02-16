@@ -1,0 +1,22 @@
+{
+  "name": "da-email-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "action.js",
+  "type": "module",
+  "scripts": {
+    "email:dev": "node --env-file=.dev.env action.js",
+    "email:ci": "node action.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3",
+    "@sendgrid/mail": "^8.1.1",
+    "jsdom": "^19.0.0",
+    "markdown-it": "^13.0.1",
+    "octokit": "^3.1.2"
+  }
+}
