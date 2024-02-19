@@ -34,7 +34,7 @@ async function sendMail(isCi, dynamicTemplateData) {
     templateId: process.env.SG_TEMPLATE,
     dynamicTemplateData,
   };
-  if (isCi) {
+  if (!isCi) {
     console.log(msg);
     return;
   }
