@@ -65,10 +65,10 @@ async function getName(octokit, username) {
 
   // Get reviewer info
   const reviews = await octokit.request(REVIEW_BASE, config);
-  const names = await reviews.data.reduce(async (acc, review) => {
-    if (review.state === 'APPROVED') acc.push(await getName(octokit, review.user.login));
-    return acc;
-  }, []);
+  const names = [];
+  await reviews.data.forEach(async (review) => {
+    if (review.state === 'APPROVED') names.push(await getName(octokit, review.user.login));
+  });
 
   const releasedBy = merged_by?.login ? await getName(octokit, merged_by.login) : null;
   if (!releasedBy) return;
