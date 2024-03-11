@@ -6,7 +6,7 @@ export const REVIEW_BASE = 'GET /repos/{owner}/{repo}/pulls/{pull_number}/review
 export const MOCK_CONFIG = {
   owner: 'adobe',
   repo: 'da-live',
-  pull_number: 71,
+  pull_number: 79,
 };
 
 export const DATE_OPTIONS = {

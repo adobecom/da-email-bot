@@ -2,6 +2,7 @@ import github from '@actions/github';
 import { Octokit } from 'octokit';
 import MarkdownIt from 'markdown-it';
 import sgMail from '@sendgrid/mail';
+import { decode } from 'html-entities';
 
 import {
   RELEASE_MARKER,
@@ -36,10 +37,9 @@ async function sendMail(isCi, dynamicTemplateData) {
   };
   if (!isCi) {
     console.log(msg);
-    return;
   }
   const resp = await sgMail.send(msg);
-  console.log(`STATUS: ${resp.statusCode}`);
+  console.log(resp);
 }
 
 async function getName(octokit, username) {
@@ -76,7 +76,7 @@ async function getName(octokit, username) {
   // Formatting cleanup
   const createdBy = await getName(octokit, user.login);
   const date = getDate(merged_at);
-  const content = notes ? mdIt.render(notes) : '';
+  const content = notes ? decode(mdIt.render(notes)) : '';
   const approvers = names.join('<br/>');
   const files = changed_files > 1 ? `${changed_files} files` : `${changed_files} file`;
 
