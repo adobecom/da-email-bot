@@ -1,12 +1,13 @@
 {
-  "name": "da-email-bot",
+  "name": "da-release-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "The bot that creates releases in DA docs.",
   "main": "action.js",
   "type": "module",
   "scripts": {
-    "email:dev": "node --env-file=.dev.env action.js",
-    "email:ci": "node action.js",
+    "send:dev": "node --env-file=.dev.env action.js",
+    "send:ci": "node action.js",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,9 +15,9 @@
   "dependencies": {
     "@actions/core": "^1.8.2",
     "@actions/github": "^5.0.3",
-    "@sendgrid/mail": "^8.1.1",
+    "@adobe/eslint-config-helix": "^3.0.9",
+    "eslint": "^9.35.0",
     "html-entities": "^2.5.2",
-    "jsdom": "^19.0.0",
     "markdown-it": "^13.0.1",
     "octokit": "^3.1.2"
   }

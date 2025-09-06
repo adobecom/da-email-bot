@@ -9,20 +9,25 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-export const RELEASE_MARKER = '## Release notes';
-export const USER_BASE = 'GET /users/{username}';
-export const PULL_BASE = 'GET /repos/{owner}/{repo}/pulls/{pull_number}';
-export const REVIEW_BASE = 'GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews';
+import { defineConfig, globalIgnores } from '@eslint/config-helpers';
+import { recommended, source, test } from '@adobe/eslint-config-helix';
 
-export const IMS = {
-  endpoint: 'https://ims-na1.adobelogin.com/ims/token/v3',
-  scopes: 'openid,AdobeID,read_organizations,additional_info.projectedProductContext,read_pc.dma_aem_ams',
-}
-
-export const MOCK_CONFIG = {
-  owner: 'adobe',
-  repo: 'da-live',
-  pull_number: 557,
-};
-
-export const DEFAULT_NOTES = '* Bug fixes and improvements';
+export default defineConfig([
+  globalIgnores([
+    'index.js',
+    '.vscode/*',
+    'logs/*',
+    'demos/*',
+    'test/fixtures',
+    'test/tmp/*',
+    'tmp/*',
+    'coverage',
+    'node_modules/*',
+    '.wrangler/*',
+  ]),
+  {
+    extends: [recommended],
+  },
+  source,
+  test,
+]);
