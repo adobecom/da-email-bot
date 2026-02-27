@@ -10,8 +10,7 @@
  * governing permissions and limitations under the License.
  */
 /* eslint-disable no-await-in-loop */
-import github from '@actions/github';
-import { Octokit } from 'octokit';
+import { context, getOctokit } from '@actions/github';
 import MarkdownIt from 'markdown-it';
 import { decode } from 'html-entities';
 import saveDoc from './src/doc.js';
@@ -50,7 +49,7 @@ function canCreate() {
 }
 
 function getConfig() {
-  const { base, number } = github.context.payload.pull_request;
+  const { base, number } = context.payload.pull_request;
   return { owner: base.repo.owner.login, repo: base.repo.name, pull_number: number };
 }
 
@@ -99,7 +98,7 @@ async function getApprovals(octokit, config, mergedBy) {
   if (!canCreate()) return;
 
   const isCi = process.env.GITHUB_ACTIONS;
-  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  const octokit = getOctokit(process.env.GITHUB_TOKEN);
   const config = isCi ? getConfig() : MOCK_CONFIG;
 
   // Get base data
