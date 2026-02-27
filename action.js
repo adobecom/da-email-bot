@@ -32,6 +32,7 @@ function canCreate() {
     IMS_CLIENT_ID,
     IMS_CLIENT_SECRET,
     AEM_API_KEY,
+    GITHUB_TOKEN,
   } = process.env;
   if (!IMS_CLIENT_ID) {
     console.log('No IMS Client ID');
@@ -43,6 +44,10 @@ function canCreate() {
   }
   if (!AEM_API_KEY) {
     console.log('No AEM API Key');
+    return false;
+  }
+  if (!GITHUB_TOKEN) {
+    console.log('No GITHUB_TOKEN. In workflows, add: env: { GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} }');
     return false;
   }
   return true;

@@ -30,6 +30,7 @@ jobs:
       - name: Use email bot
         uses: adobecom/da-email-bot@main
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SG_TO_EMAIL: ${{ secrets.SG_TO_EMAIL }}
           SG_FROM_EMAIL: ${{ secrets.SG_FROM_EMAIL }}
           SG_FROM_NAME: ${{ secrets.SG_FROM_NAME }}
