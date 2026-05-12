@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 /* eslint-disable no-await-in-loop */
-import { Octokit } from 'octokit';
+import { getOctokit } from '@actions/github';
 
 export default async function listMergedPRs(owner, repo, baseBranch) {
-  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  const octokit = getOctokit(process.env.GITHUB_TOKEN);
 
   try {
     console.log(`Fetching merged PRs for ${owner}/${repo} into ${baseBranch}...\n`);
