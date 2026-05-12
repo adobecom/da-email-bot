@@ -16,7 +16,7 @@ export const REVIEW_BASE = 'GET /repos/{owner}/{repo}/pulls/{pull_number}/review
 
 export const IMS = {
   endpoint: 'https://ims-na1.adobelogin.com/ims/token/v3',
-  scopes: 'openid,AdobeID,read_organizations,additional_info.projectedProductContext,read_pc.dma_aem_ams',
+  scopes: 'openid,AdobeID,read_organizations,additional_info.projectedProductContext,read_pc.dma_aem_ams,aem.frontend.all',
 }
 
 export const MOCK_CONFIG = {

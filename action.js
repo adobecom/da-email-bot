@@ -32,7 +32,6 @@ function canCreate() {
   const {
     IMS_CLIENT_ID,
     IMS_CLIENT_SECRET,
-    AEM_API_KEY,
   } = process.env;
   if (!IMS_CLIENT_ID) {
     console.log('No IMS Client ID');
@@ -40,10 +39,6 @@ function canCreate() {
   }
   if (!IMS_CLIENT_SECRET) {
     console.log('No IMS Client Secret');
-    return false;
-  }
-  if (!AEM_API_KEY) {
-    console.log('No AEM API Key');
     return false;
   }
   return true;

@@ -9,11 +9,16 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+import getImsToken from './ims.js';
+
 async function aemAdmin(path, api) {
+  const token = await getImsToken();
+  if (!token) return { error: 'Error getting IMS token.' };
+
   const opts = {
     method: 'POST',
     headers: {
-      'X-Auth-Token': process.env.AEM_API_KEY,
+      Authorization: `Bearer ${token}`,
     },
   };
 
