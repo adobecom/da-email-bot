@@ -17,6 +17,6 @@
     "@adobe/eslint-config-helix": "^3.0.21",
     "eslint": "^9.35.0",
     "html-entities": "^2.5.2",
-    "markdown-it": "^14.1.1"
+    "markdown-it": "^14.2.0"
   }
 }
